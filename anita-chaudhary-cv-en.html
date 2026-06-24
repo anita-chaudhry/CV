@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anita Chaudhary – Full-Stack Developer</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --accent: #1a3a5c;
+        --accent-2: #3d6e9e;
+        --accent-3: #3d6e9e;
+        --accent-soft: #eef3f8;
+        --text: #1c1c1c;
+        --muted: #5a5a5a;
+        --faint: #8a8a8a;
+        --border: #e1e6ec;
+      }
+
+      @page {
+        size: A4;
+        margin: 6mm;
+      }
+
+      body {
+        font-family: 'Inter', Arial, sans-serif;
+        font-size: 9.6pt;
+        color: var(--text);
+        background: #dfe6ee;
+        padding: 24px 20px;
+        line-height: 1.4;
+      }
+
+      /* ── PAGE = WEBSITE CANVAS ── */
+      .page {
+        max-width: 800px;
+        margin: 0 auto;
+        background: linear-gradient(
+          160deg,
+          #f4f7fb 0%,
+          #eef1f8 60%,
+          #e9eef7 100%
+        );
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        box-shadow: 0 6px 28px rgba(0, 0, 0, 0.1);
+      }
+
+      /* ── SHARED CARD STYLE ── */
+      .card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(20, 40, 70, 0.08);
+      }
+
+      /* ── HEADER ROW: standalone photo circle, separated from the header card ── */
+      .header-wrap {
+        display: flex;
+        align-items: center;
+        padding-left: 4px;
+      }
+
+      .avatar {
+        flex-shrink: 0;
+        position: relative;
+        z-index: 2;
+        margin-right: -46px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #fff;
+        box-shadow: 0 3px 10px rgba(20, 40, 70, 0.18);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+        image-rendering: -webkit-optimize-contrast;
+      }
+
+      /* ── HEADER CARD ── */
+      .header {
+        flex: 1;
+        position: relative;
+        z-index: 1;
+        background: #cdd6e3;
+        color: var(--text);
+        padding: 22px 30px 18px 85px;
+        border-radius: 16px;
+      }
+
+      .header h1 {
+        font-family: 'Poppins', 'Inter', Arial, sans-serif;
+        font-size: 19pt;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+        line-height: 1.1;
+        color: var(--text);
+        text-transform: uppercase;
+      }
+
+      .header .title {
+        display: block;
+        font-size: 10.5pt;
+        font-weight: 700;
+        color: var(--muted);
+        margin-top: 5px;
+      }
+
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 18px;
+        margin-top: 10px;
+        font-size: 8.4pt;
+        color: var(--muted);
+      }
+
+      .contact-row a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .contact-row span {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .contact-row svg {
+        flex-shrink: 0;
+        opacity: 0.95;
+      }
+
+      .contact-row .line-break {
+        flex-basis: 100%;
+        height: 0;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* ── CONTENT CARDS ── */
+      .content-card {
+        padding: 16px 28px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 9.5pt;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 9px;
+      }
+
+      .subsection-title {
+        font-size: 8.4pt;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent-2);
+        margin-top: 12px;
+        padding-top: 10px;
+        margin-bottom: 8px;
+        border-top: 1px dashed var(--border);
+      }
+
+      .section-title::before {
+        content: '';
+        width: 14px;
+        height: 3px;
+        background: var(--accent-2);
+        flex-shrink: 0;
+      }
+
+      .section-title::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+        margin-left: 6px;
+      }
+
+      /* ── SUMMARY ── */
+      .summary p {
+        color: var(--muted);
+        font-size: 9.3pt;
+        line-height: 1.5;
+      }
+
+      /* ── SKILLS (pill tags grouped by category) ── */
+      .skill-group {
+        margin-bottom: 6px;
+        display: flex;
+        gap: 12px;
+        align-items: baseline;
+      }
+
+      .skill-group:last-child {
+        margin-bottom: 0;
+      }
+
+      .skill-cat {
+        flex: 0 0 125px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 700;
+        font-size: 8.3pt;
+        color: var(--text);
+      }
+
+      .skill-cat svg {
+        flex-shrink: 0;
+        color: var(--accent-3);
+      }
+
+      .skill-tags {
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .tag {
+        font-size: 8pt;
+        color: var(--accent);
+        background: var(--accent-soft);
+        border: 1px solid var(--border);
+        padding: 2px 8px;
+        border-radius: 10px;
+        white-space: nowrap;
+      }
+
+      /* ── EXPERIENCE (timeline style) ── */
+      .timeline {
+        position: relative;
+        padding-left: 18px;
+        border-left: 2px solid var(--border);
+      }
+
+      .job {
+        position: relative;
+        margin-bottom: 12px;
+      }
+
+      .job:last-child {
+        margin-bottom: 0;
+      }
+
+      .job::before {
+        content: '';
+        position: absolute;
+        left: -23px;
+        top: 4px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent-3);
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 1px var(--accent-3);
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .job-title {
+        font-size: 10pt;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .job-date {
+        font-size: 8pt;
+        font-weight: 700;
+        color: var(--accent-3);
+        white-space: nowrap;
+        letter-spacing: 0.02em;
+      }
+
+      .job-company {
+        font-size: 8.7pt;
+        color: var(--faint);
+        font-weight: 500;
+        margin-top: 1px;
+        margin-bottom: 4px;
+      }
+
+      .job ul {
+        padding-left: 16px;
+        list-style: none;
+      }
+
+      .job ul li {
+        font-size: 8.7pt;
+        color: var(--muted);
+        margin-bottom: 2px;
+        line-height: 1.42;
+        position: relative;
+        padding-left: 14px;
+      }
+
+      .job ul li::before {
+        content: '–';
+        position: absolute;
+        left: 0;
+        color: var(--faint);
+        font-weight: 700;
+      }
+
+      /* ── FOOTER CARD (two-column: Education | Soft Skills + Languages) ── */
+      .footer-card {
+        background: var(--accent-soft);
+        padding: 16px 28px;
+      }
+
+      .footer-grid {
+        display: flex;
+        gap: 36px;
+      }
+
+      .footer-col {
+        flex: 1;
+      }
+
+      .footer-col .section-title::after {
+        background: #d6dfeb;
+      }
+
+      .edu-item {
+        margin-bottom: 7px;
+      }
+
+      .edu-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .edu-item .degree {
+        font-weight: 700;
+        font-size: 9pt;
+        color: var(--text);
+      }
+
+      .edu-item .school {
+        font-size: 8.3pt;
+        color: var(--faint);
+        margin-top: 1px;
+      }
+
+      .edu-item .edu-date {
+        font-size: 7.8pt;
+        color: var(--accent-3);
+        font-weight: 700;
+        margin-top: 1px;
+      }
+
+      .lang-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 8.7pt;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #d6dfeb;
+      }
+
+      .lang-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .lang-item .lang-name {
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .lang-item .lang-level {
+        color: var(--faint);
+        font-size: 8.1pt;
+      }
+
+      .footer-card .section:first-child {
+        margin-bottom: 12px;
+      }
+
+      /* ── PRINT (block layout so cards flow/break predictably; sized to fit one A4 page) ── */
+      @media print {
+        body {
+          background: #fff;
+          padding: 0;
+          font-size: 9.1pt;
+          line-height: 1.34;
+        }
+        .page {
+          display: block;
+          box-shadow: none;
+          max-width: 100%;
+          background: #fafbfd;
+          padding: 9px;
+        }
+        .card,
+        .header-wrap {
+          margin-bottom: 8px;
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+        .card:last-child {
+          margin-bottom: 0;
+        }
+        .header,
+        .tag,
+        .card,
+        .footer-card {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .card {
+          box-shadow: none;
+          border: 1px solid var(--border);
+        }
+        .header-wrap {
+          padding-left: 4px;
+        }
+        .header {
+          padding: 15px 24px 12px 53px;
+          border-radius: 16px;
+        }
+        .avatar {
+          width: 122px;
+          height: 122px;
+          margin-right: -34px;
+        }
+        .header h1 {
+          font-size: 17.5pt;
+        }
+        .header .title {
+          font-size: 8.4pt;
+          margin-top: 5px;
+        }
+        .contact-row {
+          font-size: 7.9pt;
+          gap: 3px 14px;
+          margin-top: 6px;
+        }
+        .content-card,
+        .footer-card {
+          padding: 10px 22px;
+        }
+        .section-title {
+          font-size: 8.8pt;
+          margin-bottom: 6px;
+        }
+        .summary p {
+          font-size: 8.5pt;
+          line-height: 1.4;
+        }
+        .skill-group {
+          margin-bottom: 4px;
+        }
+        .skill-cat {
+          font-size: 7.8pt;
+          flex: 0 0 115px;
+        }
+        .skill-cat svg {
+          width: 10px;
+          height: 10px;
+        }
+        .tag {
+          font-size: 7.5pt;
+          padding: 1.5px 6px;
+        }
+        .job {
+          margin-bottom: 6px;
+        }
+        .job-title {
+          font-size: 9.1pt;
+        }
+        .job-date {
+          font-size: 7.4pt;
+        }
+        .job-company {
+          font-size: 7.9pt;
+          margin-bottom: 3px;
+        }
+        .job ul li {
+          font-size: 7.9pt;
+          margin-bottom: 1px;
+          line-height: 1.34;
+        }
+        .subsection-title {
+          font-size: 7.8pt;
+          margin-top: 8px;
+          padding-top: 7px;
+          margin-bottom: 5px;
+        }
+        .footer-grid {
+          gap: 27px;
+        }
+        .edu-item {
+          margin-bottom: 5px;
+        }
+        .edu-item .degree {
+          font-size: 8.2pt;
+        }
+        .edu-item .school,
+        .edu-item .edu-date {
+          font-size: 7.3pt;
+        }
+        .lang-item {
+          font-size: 7.9pt;
+          margin-bottom: 4px;
+          padding-bottom: 4px;
+        }
+        .footer-card .section:first-child {
+          margin-bottom: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- HEADER: standalone photo + header card -->
+      <div class="header-wrap">
+        <img class="avatar" src="cv-photo.JPG" alt="Anita Chaudhary" />
+        <div class="card header">
+          <h1>Anita Chaudhary</h1>
+          <div class="title">Full-Stack Developer</div>
+          <div class="contact-row">
+            <span>
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"
+                />
+              </svg>
+              Chambéry, France (73000)
+            </span>
+            <span>
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
+                />
+              </svg>
+              <a href="mailto:anita.chaudhary98@outlook.com"
+                >anita.chaudhary98@outlook.com</a
+              >
+            </span>
+            <span>
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+                />
+              </svg>
+              +33 (0)6 38 05 39 81
+            </span>
+            <span class="line-break"></span>
+            <span>
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.27c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.27h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.37v4.58h-3v-9h2.88v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"
+                />
+              </svg>
+              <a href="https://linkedin.com/in/anita-chaudhary70"
+                >linkedin.com/in/anita-chaudhary70</a
+              >
+            </span>
+            <span>
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.13-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.74.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.83 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.4-5.25 5.68.42.36.78 1.08.78 2.17 0 1.57-.01 2.83-.01 3.21 0 .31.21.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"
+                />
+              </svg>
+              <a href="https://github.com/anita-chaudhary"
+                >github.com/anita-chaudhary</a
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFESSIONAL SUMMARY CARD -->
+      <div class="card content-card summary">
+        <div class="section-title">Profile</div>
+        <p>
+          Full-stack developer with two master's degrees (Web Engineering and
+          Computer Science), comfortable anywhere from the UI to the server
+          room. Built solutions across web, Android, software UIs, a QGIS
+          plugin, and server infrastructure at ITER Systems, Alpha-3i, and Cibo
+          App. Now based in France, looking for a Full-Stack or DevOps role to
+          build software that reaches real users, grow technical skills, and
+          collaborate with people who are genuinely invested in building quality
+          products.
+        </p>
+      </div>
+
+      <!-- SKILLS CARD -->
+      <div class="card content-card">
+        <div class="section-title">Technical Skills</div>
+
+        <div class="skill-group">
+          <span class="skill-cat">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            Languages
+          </span>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">JavaScript</span
+            ><span class="tag">TypeScript</span>
+            <span class="tag">HTML/CSS</span><span class="tag">SQL</span
+            ><span class="tag">PHP</span> <span class="tag">QML</span
+            ><span class="tag">XML</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <span class="skill-cat">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            Frameworks
+          </span>
+          <div class="skill-tags">
+            <span class="tag">Next.js</span><span class="tag">React.js</span
+            ><span class="tag">Vue.js</span> <span class="tag">Three.js</span
+            ><span class="tag">Tailwind CSS</span><span class="tag">Sass</span>
+            <span class="tag">Symfony</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <span class="skill-cat">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M21 5v6c0 1.66-4.03 3-9 3s-9-1.34-9-3V5"></path>
+              <path d="M3 11v6c0 1.66 4.03 3 9 3s9-1.34 9-3v-6"></path>
+            </svg>
+            Backend & Data
+          </span>
+          <div class="skill-tags">
+            <span class="tag">Node.js</span><span class="tag">REST APIs</span
+            ><span class="tag">PostgreSQL</span> <span class="tag">MySQL</span
+            ><span class="tag">MS SQL Server</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <span class="skill-cat">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
+            Infrastructure
+          </span>
+          <div class="skill-tags">
+            <span class="tag">Linux</span><span class="tag">Docker</span
+            ><span class="tag">Nginx</span> <span class="tag">CI/CD</span
+            ><span class="tag">Git</span><span class="tag">GitLab</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <span class="skill-cat">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.77z"
+              ></path>
+            </svg>
+            Tools
+          </span>
+          <div class="skill-tags">
+            <span class="tag">WordPress</span><span class="tag">Qt Creator</span
+            ><span class="tag">QGIS / PyQt</span>
+            <span class="tag">VS Code</span><span class="tag">WinDev 17</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WORK EXPERIENCE CARD -->
+      <div class="card content-card">
+        <div class="section-title">Work Experience</div>
+        <div class="timeline">
+          <div class="job">
+            <div class="job-header">
+              <span class="job-title"
+                >Full-Stack Developer (Apprenticeship)</span
+              >
+              <span class="job-date">SEPT 2024 – PRESENT</span>
+            </div>
+            <div class="job-company">
+              ITER Systems, La Motte-Servolex, France
+            </div>
+            <ul>
+              <li>
+                Redesigned and developed the company website and internal web
+                interfaces using Next.js, TypeScript, Three.js, and Tailwind
+                CSS, delivering a faster, more modern user experience.
+              </li>
+              <li>
+                Built the user interface of an internal sonar survey application
+                with Qt Creator, QML, and JavaScript, and developed a QGIS
+                plugin in Python/PyQt and PostgreSQL for real-time bathymetry
+                surveys.
+              </li>
+              <li>
+                Customised and deployed self-hosted internal tools for
+                after-sales support: a helpdesk system for tickets and
+                documentation, and a secure video conferencing service using
+                Linux, Nginx, Jitsi, and Docker.
+              </li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <span class="job-title">MES Developer</span>
+              <span class="job-date">APR 2022 – AUG 2022</span>
+            </div>
+            <div class="job-company">Alpha-3i, Alby-sur-Chéran, France</div>
+            <ul>
+              <li>
+                Developed an Android application for a Warehouse Management
+                System (WMS) covering the full product lifecycle: reception,
+                manufacturing, storage, batching, and dispatch.
+              </li>
+              <li>
+                Implemented real-time stock tracking, barcode scanning, and FIFO
+                shipping logic in WLanguage, integrated with Microsoft SQL
+                Server via SOAP APIs using WinDev 17.
+              </li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <span class="job-title">Application Support Assistant</span>
+              <span class="job-date">SEPT 2021 – JUNE 2022</span>
+            </div>
+            <div class="job-company">CiboApp Pvt. Ltd., Jodhpur, India</div>
+            <ul>
+              <li>
+                Maintained a digital restaurant menu system, updating menu
+                content and managing product data in SQL to support the
+                transition from paper menus to a streamlined digital solution.
+              </li>
+              <li>
+                Supported internal web applications through troubleshooting,
+                content updates, and administrative tasks.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection-title">Academic Project</div>
+        <div class="timeline">
+          <div class="job">
+            <div class="job-header">
+              <span class="job-title">Café des Chiens</span>
+              <span class="job-date">APR 2026 – JULY 2026</span>
+            </div>
+            <div class="job-company">ESGI, Grenoble, France</div>
+            <ul>
+              <li>
+                Designed and built a reusable digital platform for dog daycare
+                businesses, replacing manual processes with reservation
+                management, administrative tracking, and client customization
+                features.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER CARD: EDUCATION | SOFT SKILLS + LANGUAGES -->
+      <div class="card footer-card">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="section-title">Education</div>
+
+            <div class="edu-item">
+              <div class="degree">
+                Master in Web Engineering (Apprenticeship)
+              </div>
+              <div class="school">ESGI, Grenoble, France</div>
+              <div class="edu-date">2024 – 2026</div>
+            </div>
+
+            <div class="edu-item">
+              <div class="degree">Master in Computer Science</div>
+              <div class="school">Central University of Rajasthan, India</div>
+              <div class="edu-date">2016 – 2018</div>
+            </div>
+
+            <div class="edu-item">
+              <div class="degree">Bachelor's in Computer Science</div>
+              <div class="school">Central University of Rajasthan, India</div>
+              <div class="edu-date">2013 – 2016</div>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <div class="section">
+              <div class="section-title">Soft Skills</div>
+              <div class="skill-tags">
+                <span class="tag">Autonomous & Self-Driven</span
+                ><span class="tag">Adapts Quickly to New Technologies</span>
+                <span class="tag">Collaborative Team Player</span
+                ><span class="tag">Creative</span>
+              </div>
+            </div>
+
+            <div class="section">
+              <div class="section-title">Languages</div>
+
+              <div class="lang-item">
+                <span class="lang-name">English</span>
+                <span class="lang-level">Fluent</span>
+              </div>
+              <div class="lang-item">
+                <span class="lang-name">French</span>
+                <span class="lang-level">Intermediate</span>
+              </div>
+              <div class="lang-item">
+                <span class="lang-name">Hindi</span>
+                <span class="lang-level">Native</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
