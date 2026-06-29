@@ -538,7 +538,7 @@
     <div class="page">
       <!-- EN-TÊTE : photo séparée + carte d'en-tête -->
       <div class="header-wrap">
-        <img class="avatar" src="old-cv-photo.JPG" alt="Anita Chaudhary" />
+        <img class="avatar" src="cv-photo.JPG" alt="Anita Chaudhary" />
         <div class="card header">
           <h1>Anita Chaudhary</h1>
           <div class="title">Développeuse Full-Stack</div>
@@ -924,5 +924,10 @@
         </div>
       </div>
     </div>
+    <script>
+      if (new URLSearchParams(location.search).get('print') === '1') {
+        window.addEventListener('load', () => setTimeout(() => window.print(), 300));
+      }
+    </script>
   </body>
 </html>

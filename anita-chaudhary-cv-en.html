@@ -919,5 +919,10 @@
         </div>
       </div>
     </div>
+    <script>
+      if (new URLSearchParams(location.search).get('print') === '1') {
+        window.addEventListener('load', () => setTimeout(() => window.print(), 300));
+      }
+    </script>
   </body>
 </html>

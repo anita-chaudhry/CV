@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anita Chaudhary – CV</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800&family=Share+Tech+Mono&display=swap');
 
       * {
         margin: 0;
@@ -14,8 +14,8 @@
       }
 
       :root {
-        --accent: #1a3a5c;
-        --accent-2: #3d6e9e;
+        --accent: #0d3a23;
+        --accent-2: #2ecc71;
         --accent-soft: #eef3f8;
         --text: #1c1c1c;
         --muted: #5a5a5a;
@@ -27,256 +27,1177 @@
       }
 
       body {
-        font-family: 'Inter', Arial, sans-serif;
-        color: var(--text);
-        background: radial-gradient(circle at 20% 20%, #2a4f78 0%, #142a40 45%, #0a151f 100%);
+        font-family: 'Share Tech Mono', 'Courier New', monospace;
+        color: #b9f5d0;
+        background: radial-gradient(circle at 20% 20%, #0a2418 0%, #051410 45%, #020a06 100%);
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         overflow: hidden;
         position: relative;
-        perspective: 1200px;
       }
 
-      /* Floating skill bubbles in the background */
-      .bubbles {
-        position: absolute;
+      /* ============ LANDING ============ */
+      .landing {
+        position: fixed;
         inset: 0;
-        z-index: 0;
-        pointer-events: none;
-      }
-
-      .bubble {
-        position: absolute;
-        left: var(--x);
-        bottom: -160px;
-        width: var(--size);
-        height: var(--size);
-        border-radius: 50%;
-        background: radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.3), rgba(109, 168, 214, 0.14) 55%, rgba(61, 110, 158, 0.06) 100%);
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        box-shadow: inset 0 0 14px rgba(255, 255, 255, 0.15), 0 0 12px rgba(109, 168, 214, 0.15);
-        backdrop-filter: blur(2px);
-        pointer-events: auto;
-        cursor: default;
-        animation: rise var(--dur) linear infinite;
-        animation-delay: var(--delay);
-        transition: box-shadow 0.3s ease, background 0.3s ease;
-        will-change: transform;
-      }
-
-      .bubble:hover {
-        box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.3), 0 0 30px rgba(109, 168, 214, 0.65);
-        background: radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.45), rgba(109, 168, 214, 0.25) 55%, rgba(61, 110, 158, 0.15) 100%);
-        animation-play-state: paused;
-        z-index: 1;
-      }
-
-      .bubble-label {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 6%;
-        color: #fff;
-        font-weight: 600;
-        font-size: var(--font-size, 0.7rem);
-        line-height: 1.1;
-        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-        pointer-events: none;
-      }
-
-      @keyframes rise {
-        0% { transform: translate(0, 0); opacity: 0; }
-        8% { opacity: 0.95; }
-        25% { transform: translate(var(--wob1), -28vh); }
-        50% { transform: translate(var(--wob2), -56vh); }
-        75% { transform: translate(var(--wob3), -84vh); }
-        92% { opacity: 0.9; }
-        100% { transform: translate(var(--wob4), -125vh); opacity: 0; }
-      }
-
-      .intro {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        margin-bottom: 56px;
-        transform-style: preserve-3d;
-      }
-
-      h1 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 2.2rem;
-        color: #fff;
-        margin-bottom: 10px;
-        letter-spacing: 0.5px;
-        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
-      }
-
-      .intro p {
-        color: #b9cbe0;
-        font-size: 1rem;
-      }
-
-      .stage {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        gap: 40px;
-        perspective: 1000px;
-      }
-
-      .lang-card {
-        position: relative;
-        width: 220px;
-        height: 280px;
-        border-radius: 20px;
-        background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(8px);
-        text-decoration: none;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 18px;
-        transform-style: preserve-3d;
-        transition: transform 0.12s ease-out, box-shadow 0.25s ease;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-        will-change: transform;
-        cursor: pointer;
+        z-index: 50;
+        transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.6, 0, 0.4, 1);
       }
 
-      .lang-card::before {
+      .landing.launching {
+        opacity: 0;
+        transform: scale(1.4);
+        pointer-events: none;
+      }
+
+      .landing {
+        background: #020a04;
+      }
+
+      .landing::after {
         content: '';
         position: absolute;
         inset: 0;
-        border-radius: 20px;
-        background: radial-gradient(circle 140px at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.35), transparent 70%);
+        z-index: 3;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0) 0px,
+          rgba(0, 0, 0, 0) 2px,
+          rgba(57, 255, 120, 0.035) 3px
+        );
+      }
+
+      #wireframeGlobe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        pointer-events: none;
+        opacity: 1;
+        width: min(820px, 98vw);
+        height: min(820px, 98vw);
+      }
+
+      .landing-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        width: 92%;
+        max-width: 560px;
+      }
+
+      .terminal {
+        background: #03130a;
+        border: 1px solid #1f7a4c;
+        border-radius: 8px;
+        box-shadow: 0 0 50px rgba(40, 255, 130, 0.12), 0 18px 50px rgba(0, 0, 0, 0.6);
+        font-family: 'Share Tech Mono', 'Courier New', monospace;
+        text-align: left;
+        overflow: hidden;
+      }
+
+      .terminal-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 14px;
+        background: rgba(57, 255, 120, 0.06);
+        border-bottom: 1px solid rgba(57, 255, 120, 0.25);
+      }
+
+      .terminal-bar .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      .terminal-bar .dot.red { background: #ff5f56; }
+      .terminal-bar .dot.yellow { background: #ffbd2e; }
+      .terminal-bar .dot.green { background: #27c93f; }
+
+      .terminal-title {
+        margin-left: auto;
+        font-size: 0.72rem;
+        color: #6fffb0;
+        opacity: 0.7;
+      }
+
+      .terminal-body {
+        padding: 20px 22px 24px;
+        min-height: 230px;
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: #4cffa0;
+        text-shadow: 0 0 6px rgba(76, 255, 160, 0.45);
+      }
+
+      .terminal-line {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .prompt {
+        color: #7fffb0;
+        margin-right: 8px;
+      }
+
+      .cmd-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        color: #c8ffe4;
+        cursor: pointer;
+        text-decoration: underline dotted rgba(200, 255, 228, 0.5);
+      }
+
+      .cmd-btn:hover {
+        color: #fff;
+        text-shadow: 0 0 10px rgba(140, 255, 190, 0.8);
+      }
+
+      .sub-options {
+        margin-left: 22px;
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .sub-options.open {
+        display: flex;
+      }
+
+      .sub-options a {
+        color: #9dffce;
+        text-decoration: none;
+      }
+
+      .sub-options a:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      .cursor-block {
+        display: inline-block;
+        width: 8px;
+        height: 1em;
+        background: #4cffa0;
+        vertical-align: middle;
+        animation: blink 1s steps(1) infinite;
+      }
+
+      @keyframes blink {
+        50% { opacity: 0; }
+      }
+
+      @media (max-width: 600px) {
+        .terminal-body { font-size: 0.82rem; }
+      }
+
+      /* ============ DESKTOP ============ */
+      .desktop {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
         opacity: 0;
-        transition: opacity 0.25s ease;
+        transform: scale(0.85);
+        pointer-events: none;
+        transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .desktop.active {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+      }
+
+      .desktop-icons {
+        position: absolute;
+        top: 36px;
+        left: 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        z-index: 5;
+      }
+
+      .desktop-icon {
+        width: 86px;
+        background: none;
+        border: none;
+        color: #b9f5d0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 10px;
+        transition: background 0.15s ease;
+      }
+
+      .desktop-icon:hover,
+      .desktop-icon:focus {
+        background: rgba(57, 255, 120, 0.1);
+      }
+
+      .desktop-icon .icon-box {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        background: linear-gradient(145deg, rgba(57, 255, 120, 0.12), rgba(57, 255, 120, 0.03));
+        border: 1px solid rgba(57, 255, 120, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+      }
+
+      .desktop-icon .icon-box svg {
+        width: 22px;
+        height: 22px;
+        stroke: #9dffce;
+      }
+
+      .desktop-icon span.label {
+        font-size: 0.74rem;
+        font-weight: 600;
+        text-shadow: 0 0 6px rgba(70, 255, 150, 0.4);
+        text-align: center;
+      }
+
+      .windows-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 6;
         pointer-events: none;
       }
 
-      .lang-card:hover::before {
-        opacity: 1;
+      .window {
+        pointer-events: auto;
+        position: absolute;
+        width: 420px;
+        min-width: 280px;
+        max-width: 92vw;
+        max-height: 78vh;
+        display: flex;
+        flex-direction: column;
+        background: rgba(4, 19, 12, 0.94);
+        border: 1px solid rgba(57, 255, 120, 0.25);
+        border-radius: 14px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(57, 255, 120, 0.08);
+        backdrop-filter: blur(14px);
+        overflow: hidden;
+        animation: pop-in 0.18s ease;
       }
 
-      .lang-card:hover {
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(109, 168, 214, 0.35);
+      .window.minimized {
+        display: none;
       }
 
-      .lang-name {
-        font-family: 'Poppins', sans-serif;
-        font-size: 1.2rem;
+      @keyframes pop-in {
+        from { opacity: 0; transform: scale(0.92); }
+        to { opacity: 1; transform: scale(1); }
+      }
+
+      .window-titlebar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        background: rgba(57, 255, 120, 0.06);
+        border-bottom: 1px solid rgba(57, 255, 120, 0.25);
+        cursor: grab;
+        user-select: none;
+      }
+
+      .window-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
         font-weight: 700;
+        color: #c8ffe4;
+      }
+
+      .window-title svg {
+        width: 15px;
+        height: 15px;
+        stroke: #6fffb0;
+        flex-shrink: 0;
+      }
+
+      .window-controls {
+        display: flex;
+        gap: 6px;
+      }
+
+      .win-btn {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        border: none;
+        background: rgba(57, 255, 120, 0.1);
+        color: #9dffce;
+        font-size: 0.85rem;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.15s ease;
+      }
+
+      .win-btn:hover {
+        background: rgba(57, 255, 120, 0.22);
+      }
+
+      .win-btn.close:hover {
+        background: #c0392b;
         color: #fff;
-        transform: translateZ(30px);
       }
 
-      .lang-sub {
+      .window-body {
+        padding: 18px 20px;
+        overflow-y: auto;
+        font-size: 0.85rem;
+        color: #b9f5d0;
+        line-height: 1.55;
+      }
+
+      .window-body::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .window-body::-webkit-scrollbar-thumb {
+        background: rgba(57, 255, 120, 0.2);
+        border-radius: 4px;
+      }
+
+      .win-section-title {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #6fffb0;
+        margin: 16px 0 8px;
+      }
+
+      .win-section-title:first-child {
+        margin-top: 0;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tag {
+        font-size: 0.74rem;
+        color: #b9f5d0;
+        background: rgba(57, 255, 120, 0.12);
+        border: 1px solid rgba(57, 255, 120, 0.3);
+        padding: 3px 10px;
+        border-radius: 10px;
+        white-space: nowrap;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 14px;
+      }
+
+      .tab-btn {
+        flex: 1;
+        background: rgba(57, 255, 120, 0.06);
+        border: 1px solid rgba(57, 255, 120, 0.2);
+        color: #b9f5d0;
+        font-weight: 700;
+        font-size: 0.78rem;
+        padding: 7px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+
+      .tab-btn.active {
+        background: var(--accent-2);
+        color: #03130a;
+        border-color: transparent;
+      }
+
+      .tab-panel {
+        display: none;
+      }
+
+      .tab-panel.active {
+        display: block;
+      }
+
+      .job {
+        margin-bottom: 14px;
+        padding-bottom: 14px;
+        border-bottom: 1px dashed rgba(57, 255, 120, 0.18);
+      }
+
+      .job:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .job-title {
+        font-weight: 700;
+        color: #e9fff2;
+        font-size: 0.88rem;
+      }
+
+      .job-date {
+        font-size: 0.72rem;
+        color: #6fffb0;
+        font-weight: 700;
+      }
+
+      .job-company {
+        font-size: 0.78rem;
+        color: #8fae9c;
+        margin: 2px 0 6px;
+      }
+
+      .job ul {
+        padding-left: 16px;
+      }
+
+      .job ul li {
+        margin-bottom: 3px;
+      }
+
+      .edu-item {
+        margin-bottom: 10px;
+      }
+
+      .edu-item .degree {
+        font-weight: 700;
+        color: #e9fff2;
+        font-size: 0.85rem;
+      }
+
+      .edu-item .school {
+        font-size: 0.78rem;
+        color: #8fae9c;
+      }
+
+      .edu-item .edu-date {
+        font-size: 0.74rem;
+        color: #6fffb0;
+        font-weight: 700;
+      }
+
+      .lang-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 0;
+        border-bottom: 1px solid rgba(57, 255, 120, 0.15);
         font-size: 0.82rem;
-        color: #a9bdd4;
-        transform: translateZ(20px);
       }
 
-      footer {
-        position: relative;
-        z-index: 2;
-        margin-top: 50px;
-        color: #6f87a3;
+      .lang-item:last-child {
+        border-bottom: none;
+      }
+
+      .lang-item b {
+        color: #e9fff2;
+      }
+
+      .contact-list a,
+      .contact-list span {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 8px 0;
+        color: #b9f5d0;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(57, 255, 120, 0.15);
+        font-size: 0.84rem;
+      }
+
+      .contact-list a:hover {
+        color: #e9fff2;
+      }
+
+      .contact-list svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        color: #6fffb0;
+      }
+
+      .project-card {
+        background: rgba(57, 255, 120, 0.04);
+        border: 1px solid rgba(57, 255, 120, 0.18);
+        border-radius: 10px;
+        padding: 12px 14px;
+        margin-bottom: 10px;
+      }
+
+      .project-card:last-child {
+        margin-bottom: 0;
+      }
+
+      .project-card .proj-title {
+        font-weight: 700;
+        color: #e9fff2;
+        font-size: 0.86rem;
+        margin-bottom: 2px;
+      }
+
+      .project-card .proj-org {
+        font-size: 0.74rem;
+        color: #8fae9c;
+        margin-bottom: 6px;
+      }
+
+      .project-card .proj-desc {
         font-size: 0.8rem;
-        letter-spacing: 0.3px;
+        margin-bottom: 8px;
       }
 
-      @media (max-width: 540px) {
-        .stage { flex-direction: column; }
-        h1 { font-size: 1.7rem; }
+      .placeholder-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        padding: 30px 10px;
+        color: #8fae9c;
+      }
+
+      .placeholder-box svg {
+        width: 34px;
+        height: 34px;
+        opacity: 0.6;
+      }
+
+      .placeholder-box a {
+        color: #6fffb0;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .resume-link {
+        display: inline-block;
+        margin-top: 14px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: #6fffb0;
+        text-decoration: none;
+      }
+
+      .resume-link:hover {
+        text-decoration: underline;
+      }
+
+      .taskbar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 52px;
+        background: rgba(2, 15, 8, 0.9);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(57, 255, 120, 0.25);
+        display: flex;
+        align-items: center;
+        padding: 0 18px;
+        gap: 16px;
+        z-index: 7;
+      }
+
+      .taskbar-brand {
+        font-family: 'Share Tech Mono', monospace;
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #c8ffe4;
+      }
+
+      .taskbar-apps {
+        flex: 1;
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+      }
+
+      .taskbar-app-btn {
+        background: rgba(57, 255, 120, 0.1);
+        border: 1px solid rgba(57, 255, 120, 0.2);
+        color: #b9f5d0;
+        font-size: 0.76rem;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .taskbar-app-btn.active {
+        background: var(--accent-2);
+        color: #03130a;
+        border-color: transparent;
+      }
+
+      .taskbar-clock {
+        font-size: 0.78rem;
+        color: #8fae9c;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 600px) {
+        .window { width: 92vw; }
+        .desktop-icons { gap: 14px; }
       }
     </style>
   </head>
   <body>
-    <div class="bubbles" id="bubbles"></div>
-
-    <div class="intro">
-      <h1>Anita Chaudhary</h1>
-      <p>Choose a language / Choisissez une langue</p>
+    <!-- ============ LANDING ============ -->
+    <div class="landing" id="landing">
+      <canvas id="wireframeGlobe" width="820" height="820"></canvas>
+      <div class="landing-content">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">anita@portfolio: ~</span>
+          </div>
+          <div class="terminal-body" id="terminalBody"></div>
+        </div>
+      </div>
     </div>
 
-    <div class="stage">
-      <a class="lang-card" href="anita-chaudhary-cv-en.html" data-tilt>
-        <span class="lang-name">English</span>
-        <span class="lang-sub">View CV in English</span>
-      </a>
-      <a class="lang-card" href="anita-chaudhary-cv-fr.html" data-tilt>
-        <span class="lang-name">Français</span>
-        <span class="lang-sub">Voir le CV en français</span>
-      </a>
+    <!-- ============ DESKTOP ============ -->
+    <div class="desktop" id="desktop">
+      <div class="desktop-icons" id="desktopIcons"></div>
+      <div class="windows-layer" id="windowsLayer"></div>
+      <div class="taskbar">
+        <div class="taskbar-brand">Anita OS</div>
+        <div class="taskbar-apps" id="taskbarApps"></div>
+        <div class="taskbar-clock" id="clock"></div>
+      </div>
     </div>
-
-    <footer>Hover the cards · Click to open</footer>
 
     <script>
-      const skills = [
-        'Python', 'JavaScript', 'TypeScript', 'React.js', 'Next.js',
-        'Vue.js', 'Three.js', 'Node.js', 'PostgreSQL', 'Docker',
-        'Linux', 'Git', 'Tailwind CSS', 'REST APIs',
+      /* ---------- Wireframe ASCII-style rotating globe ---------- */
+      (function () {
+        const canvas = document.getElementById('wireframeGlobe');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 820;
+        canvas.height = 820;
+        const size = canvas.width;
+        const cx = size / 2;
+        const cy = size / 2;
+        const radius = 360;
+        const focal = 700;
+
+        const latBands = 9;
+        const lonBands = 16;
+        const points = [];
+
+        for (let i = 0; i <= latBands; i++) {
+          const lat = (Math.PI * i) / latBands - Math.PI / 2;
+          const row = [];
+          for (let j = 0; j <= lonBands; j++) {
+            const lon = (2 * Math.PI * j) / lonBands;
+            row.push({
+              x: radius * Math.cos(lat) * Math.cos(lon),
+              y: radius * Math.sin(lat),
+              z: radius * Math.cos(lat) * Math.sin(lon),
+            });
+          }
+          points.push(row);
+        }
+
+        let angle = 0;
+        const tilt = -0.28;
+        let lastTime = performance.now();
+
+        function rotate(p, a) {
+          const cosA = Math.cos(a);
+          const sinA = Math.sin(a);
+          const x = p.x * cosA - p.z * sinA;
+          const z = p.x * sinA + p.z * cosA;
+          const cosT = Math.cos(tilt);
+          const sinT = Math.sin(tilt);
+          const y = p.y * cosT - z * sinT;
+          const z2 = p.y * sinT + z * cosT;
+          return { x, y, z: z2 };
+        }
+
+        function project(p) {
+          const scale = focal / (focal + p.z);
+          return { x: cx + p.x * scale, y: cy + p.y * scale, depth: p.z };
+        }
+
+        function drawLine(p1, p2) {
+          const avgZ = (p1.z + p2.z) / 2;
+          const depth = (avgZ + radius) / (radius * 2);
+          const alpha = Math.max(0.45, Math.min(1, depth + 0.2));
+          ctx.strokeStyle = `rgba(70, 255, 150, ${alpha})`;
+          ctx.lineWidth = 1.6 + depth * 1.4;
+          ctx.shadowColor = 'rgba(70, 255, 150, 0.9)';
+          ctx.shadowBlur = 6;
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+
+        function render(now) {
+          const dt = (now - lastTime) / 1000;
+          lastTime = now;
+          angle += dt * 0.35;
+
+          ctx.clearRect(0, 0, size, size);
+
+          const projected = points.map((row) => row.map((p) => project(rotate(p, angle))));
+
+          for (let i = 0; i <= latBands; i++) {
+            for (let j = 0; j < lonBands; j++) {
+              drawLine(projected[i][j], projected[i][j + 1]);
+            }
+          }
+          for (let j = 0; j <= lonBands; j++) {
+            for (let i = 0; i < latBands; i++) {
+              drawLine(projected[i][j], projected[i + 1][j]);
+            }
+          }
+
+          requestAnimationFrame(render);
+        }
+
+        requestAnimationFrame(render);
+      })();
+
+      /* ---------- Terminal boot sequence ---------- */
+      const terminalBody = document.getElementById('terminalBody');
+
+      function typeLine(text, speed = 16) {
+        return new Promise((resolve) => {
+          const line = document.createElement('div');
+          line.className = 'terminal-line';
+          terminalBody.appendChild(line);
+          let i = 0;
+          const cursor = document.createElement('span');
+          cursor.className = 'cursor-block';
+
+          function step() {
+            if (i <= text.length) {
+              line.textContent = text.slice(0, i);
+              line.appendChild(cursor);
+              i++;
+              setTimeout(step, speed);
+            } else {
+              cursor.remove();
+              resolve();
+            }
+          }
+          step();
+        });
+      }
+
+      async function bootSequence() {
+        const lines = [
+          'booting anita_os v2.0 ...',
+          'loading profile [Anita Chaudhary]',
+          'role: Full-Stack Developer',
+          'type a command below',
+        ];
+        for (const l of lines) {
+          await typeLine('> ' + l);
+        }
+        renderPrompt();
+      }
+
+      function renderPrompt() {
+        const launchRow = document.createElement('div');
+        launchRow.className = 'terminal-line';
+        launchRow.innerHTML = '<span class="prompt">anita@portfolio:~$</span> <button class="cmd-btn" id="launchBtn">launch workspace</button>';
+        terminalBody.appendChild(launchRow);
+
+        const downloadRow = document.createElement('div');
+        downloadRow.className = 'terminal-line';
+        downloadRow.innerHTML = '<span class="prompt">anita@portfolio:~$</span> <button class="cmd-btn" id="downloadBtn">download cv</button>';
+        terminalBody.appendChild(downloadRow);
+
+        const subOptions = document.createElement('div');
+        subOptions.className = 'sub-options';
+        subOptions.id = 'downloadOptions';
+        subOptions.innerHTML = `
+          <div class="terminal-line"><span class="prompt">  &gt;</span> <a href="anita-chaudhary-cv-en.html?print=1" target="_blank" rel="noopener">english</a></div>
+          <div class="terminal-line"><span class="prompt">  &gt;</span> <a href="anita-chaudhary-cv-fr.html?print=1" target="_blank" rel="noopener">français</a></div>
+        `;
+        terminalBody.appendChild(subOptions);
+
+        const finalRow = document.createElement('div');
+        finalRow.className = 'terminal-line';
+        finalRow.innerHTML = '<span class="prompt">anita@portfolio:~$</span> <span class="cursor-block"></span>';
+        terminalBody.appendChild(finalRow);
+
+        document.getElementById('launchBtn').addEventListener('click', launchWorkspace);
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+          subOptions.classList.toggle('open');
+        });
+      }
+
+      bootSequence();
+
+      /* ---------- Icons ---------- */
+      const icons = {
+        resume: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg>',
+        skills: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>',
+        experience: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
+        contact: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6Z"></path><path d="m22 6-10 7L2 6"></path></svg>',
+        projects: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>',
+        analytics: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>',
+        github: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.13-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.74.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.83 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.4-5.25 5.68.42.36.78 1.08.78 2.17 0 1.57-.01 2.83-.01 3.21 0 .31.21.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"></path></svg>',
+        mail: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg>',
+        phone: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg>',
+        pin: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"></path></svg>',
+        linkedin: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.27c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.27h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.37v4.58h-3v-9h2.88v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"></path></svg>',
+      };
+
+      /* ---------- Resume content (EN/FR) ---------- */
+      const resumeData = {
+        en: {
+          summary: "Full-stack developer with two master's degrees (Web Engineering and Computer Science), comfortable anywhere from the UI to the server room. Built solutions across web, Android, software UIs, a QGIS plugin, and server infrastructure at ITER Systems, Alpha-3i, and Cibo App. Now based in France, looking for a Full-Stack or DevOps role to build software that reaches real users, grow technical skills, and collaborate with people who are genuinely invested in building quality products.",
+          education: [
+            { degree: "Master in Web Engineering (Apprenticeship)", school: "ESGI, Grenoble, France", date: "2024 – 2026" },
+            { degree: "Master in Computer Science", school: "Central University of Rajasthan, India", date: "2016 – 2018" },
+            { degree: "Bachelor's in Computer Science", school: "Central University of Rajasthan, India", date: "2013 – 2016" },
+          ],
+          languages: [
+            { name: "English", level: "Fluent" },
+            { name: "French", level: "Intermediate" },
+            { name: "Hindi", level: "Native" },
+          ],
+          cvFile: "anita-chaudhary-cv-en.html",
+          cvLabel: "Open full printable CV (English) →",
+        },
+        fr: {
+          summary: "Développeuse full-stack titulaire de deux masters (Ingénierie du Web et Informatique), à l'aise aussi bien sur l'interface utilisateur que sur l'infrastructure serveur. A conçu des solutions web, Android, des interfaces logicielles, un plugin QGIS et de l'infrastructure serveur chez ITER Systems, Alpha-3i et Cibo App. Aujourd'hui basée en France, recherche un poste de Développeuse Full-Stack ou DevOps pour créer des logiciels qui touchent de vrais utilisateurs, développer ses compétences techniques et collaborer avec des personnes réellement investies dans la qualité des produits.",
+          education: [
+            { degree: "Master en Ingénierie du Web (Alternance)", school: "ESGI, Grenoble, France", date: "2024 – 2026" },
+            { degree: "Master en Informatique", school: "Central University of Rajasthan, Inde", date: "2016 – 2018" },
+            { degree: "Licence en Informatique", school: "Central University of Rajasthan, Inde", date: "2013 – 2016" },
+          ],
+          languages: [
+            { name: "Anglais", level: "Courant" },
+            { name: "Français", level: "Intermédiaire" },
+            { name: "Hindi", level: "Langue Maternelle" },
+          ],
+          cvFile: "anita-chaudhary-cv-fr.html",
+          cvLabel: "Voir le CV complet imprimable (Français) →",
+        },
+      };
+
+      function renderResumeLang(lang) {
+        const d = resumeData[lang];
+        return `
+          <p>${d.summary}</p>
+          <div class="win-section-title">Education</div>
+          ${d.education.map((e) => `
+            <div class="edu-item">
+              <div class="degree">${e.degree}</div>
+              <div class="school">${e.school}</div>
+              <div class="edu-date">${e.date}</div>
+            </div>
+          `).join('')}
+          <div class="win-section-title">${lang === 'en' ? 'Languages' : 'Langues'}</div>
+          ${d.languages.map((l) => `
+            <div class="lang-item"><span>${l.name}</span><b>${l.level}</b></div>
+          `).join('')}
+          <a class="resume-link" href="${d.cvFile}" target="_blank" rel="noopener">${d.cvLabel}</a>
+        `;
+      }
+
+      function renderResume() {
+        return `
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="en">English</button>
+            <button class="tab-btn" data-tab="fr">Français</button>
+          </div>
+          <div class="tab-panel active" data-panel="en">${renderResumeLang('en')}</div>
+          <div class="tab-panel" data-panel="fr">${renderResumeLang('fr')}</div>
+        `;
+      }
+
+      /* ---------- Skills app ---------- */
+      function renderSkills() {
+        const groups = [
+          { cat: "Languages", tags: ["Python", "JavaScript", "TypeScript", "HTML/CSS", "SQL", "PHP", "QML", "XML"] },
+          { cat: "Frameworks", tags: ["Next.js", "React.js", "Vue.js", "Three.js", "Tailwind CSS", "Sass", "Symfony"] },
+          { cat: "Backend & Data", tags: ["Node.js", "REST APIs", "PostgreSQL", "MySQL", "MS SQL Server"] },
+          { cat: "Infrastructure", tags: ["Linux", "Docker", "Nginx", "CI/CD", "Git", "GitLab"] },
+          { cat: "Tools", tags: ["WordPress", "Qt Creator", "QGIS / PyQt", "VS Code", "WinDev 17"] },
+        ];
+        return groups.map((g) => `
+          <div class="win-section-title">${g.cat}</div>
+          <div class="tags">${g.tags.map((t) => `<span class="tag">${t}</span>`).join('')}</div>
+        `).join('');
+      }
+
+      /* ---------- Experience app ---------- */
+      function renderExperience() {
+        const jobs = [
+          {
+            title: "Full-Stack Developer (Apprenticeship)", date: "SEPT 2024 – PRESENT",
+            company: "ITER Systems, La Motte-Servolex, France",
+            bullets: [
+              "Redesigned and developed the company website and internal web interfaces using Next.js, TypeScript, Three.js, and Tailwind CSS.",
+              "Built the UI of an internal sonar survey application with Qt Creator/QML and a QGIS plugin in Python/PyQt + PostgreSQL.",
+              "Deployed self-hosted internal tools: a helpdesk system and a secure video conferencing service (Linux, Nginx, Jitsi, Docker).",
+            ],
+          },
+          {
+            title: "MES Developer", date: "APR 2022 – AUG 2022",
+            company: "Alpha-3i, Alby-sur-Chéran, France",
+            bullets: [
+              "Developed an Android app for a Warehouse Management System covering reception, manufacturing, storage, batching, and dispatch.",
+              "Implemented real-time stock tracking, barcode scanning, and FIFO shipping logic in WLanguage with MS SQL Server via SOAP APIs.",
+            ],
+          },
+          {
+            title: "Application Support Assistant", date: "SEPT 2021 – JUNE 2022",
+            company: "CiboApp Pvt. Ltd., Jodhpur, India",
+            bullets: [
+              "Maintained a digital restaurant menu system, managing product data in SQL during the transition from paper menus.",
+              "Supported internal web applications through troubleshooting, content updates, and administrative tasks.",
+            ],
+          },
+        ];
+        return jobs.map((j) => `
+          <div class="job">
+            <div class="job-header"><span class="job-title">${j.title}</span></div>
+            <span class="job-date">${j.date}</span>
+            <div class="job-company">${j.company}</div>
+            <ul>${j.bullets.map((b) => `<li>${b}</li>`).join('')}</ul>
+          </div>
+        `).join('');
+      }
+
+      /* ---------- Contact app ---------- */
+      function renderContact() {
+        return `
+          <div class="contact-list">
+            <span>${icons.pin}Chambéry, France (73000)</span>
+            <a href="mailto:anita.chaudhary98@outlook.com">${icons.mail}anita.chaudhary98@outlook.com</a>
+            <a href="tel:+33638053981">${icons.phone}+33 (0)6 38 05 39 81</a>
+            <a href="https://linkedin.com/in/anita-chaudhary70" target="_blank" rel="noopener">${icons.linkedin}linkedin.com/in/anita-chaudhary70</a>
+            <a href="https://github.com/anita-chaudhry" target="_blank" rel="noopener">${icons.github}github.com/anita-chaudhry</a>
+          </div>
+        `;
+      }
+
+      /* ---------- Projects app (real work, drawn from experience) ---------- */
+      function renderProjects() {
+        const projects = [
+          { title: "ITER Systems Website Redesign", org: "ITER Systems", desc: "Company website and internal web interfaces rebuilt with Next.js, TypeScript, Three.js, and Tailwind CSS.", tags: ["Next.js", "TypeScript", "Three.js"] },
+          { title: "Sonar Survey Application UI", org: "ITER Systems", desc: "Interface for an internal sonar survey tool, built with Qt Creator and QML.", tags: ["Qt Creator", "QML"] },
+          { title: "QGIS Bathymetry Plugin", org: "ITER Systems", desc: "Real-time bathymetry survey plugin written in Python/PyQt with PostgreSQL.", tags: ["Python", "PyQt", "PostgreSQL"] },
+          { title: "Warehouse Management System (Android)", org: "Alpha-3i", desc: "Android app covering the full WMS lifecycle, with FIFO shipping logic and MS SQL Server integration.", tags: ["WinDev 17", "WLanguage", "MS SQL Server"] },
+          { title: "Café des Chiens", org: "ESGI – Academic Project", desc: "Reusable digital platform for dog daycare businesses: reservations, admin tracking, client customization.", tags: ["Full-Stack"] },
+        ];
+        return projects.map((p) => `
+          <div class="project-card">
+            <div class="proj-title">${p.title}</div>
+            <div class="proj-org">${p.org}</div>
+            <div class="proj-desc">${p.desc}</div>
+            <div class="tags">${p.tags.map((t) => `<span class="tag">${t}</span>`).join('')}</div>
+          </div>
+        `).join('');
+      }
+
+      /* ---------- Placeholder apps ---------- */
+      function renderAnalytics() {
+        return `
+          <div class="placeholder-box">
+            ${icons.analytics}
+            <p>Analytics dashboard coming soon.</p>
+            <p>This window will track visits and engagement with this workspace.</p>
+          </div>
+        `;
+      }
+
+      function renderGithubActivity() {
+        return `
+          <div class="placeholder-box">
+            ${icons.github}
+            <p>Live activity feed coming soon.</p>
+            <a href="https://github.com/anita-chaudhry" target="_blank" rel="noopener">View GitHub profile →</a>
+          </div>
+        `;
+      }
+
+      /* ---------- App registry ---------- */
+      const apps = [
+        { id: 'resume', label: 'Resume', icon: icons.resume, render: renderResume },
+        { id: 'skills', label: 'Skills', icon: icons.skills, render: renderSkills },
+        { id: 'experience', label: 'Experience', icon: icons.experience, render: renderExperience },
+        { id: 'projects', label: 'Projects', icon: icons.projects, render: renderProjects },
+        { id: 'contact', label: 'Contact', icon: icons.contact, render: renderContact },
+        { id: 'analytics', label: 'Analytics', icon: icons.analytics, render: renderAnalytics },
+        { id: 'github', label: 'GitHub Activity', icon: icons.github, render: renderGithubActivity },
       ];
 
-      const bubbleContainer = document.getElementById('bubbles');
-
-      skills.forEach((skill) => {
-        const bubble = document.createElement('div');
-        bubble.className = 'bubble';
-
-        const size = 80 + Math.random() * 50;
-        bubble.style.setProperty('--size', `${size}px`);
-        bubble.style.setProperty('--x', `${Math.random() * 90}%`);
-        bubble.style.setProperty('--dur', `${14 + Math.random() * 10}s`);
-        bubble.style.setProperty('--delay', `${Math.random() * -20}s`);
-        bubble.style.setProperty('--wob1', `${(Math.random() - 0.5) * 80}px`);
-        bubble.style.setProperty('--wob2', `${(Math.random() - 0.5) * 80}px`);
-        bubble.style.setProperty('--wob3', `${(Math.random() - 0.5) * 80}px`);
-        bubble.style.setProperty('--wob4', `${(Math.random() - 0.5) * 80}px`);
-        bubble.style.setProperty('--font-size', `${Math.max(0.55, size / 140)}rem`);
-
-        const label = document.createElement('span');
-        label.className = 'bubble-label';
-        label.textContent = skill;
-
-        bubble.appendChild(label);
-        bubbleContainer.appendChild(bubble);
+      /* ---------- Desktop icons ---------- */
+      const desktopIcons = document.getElementById('desktopIcons');
+      apps.forEach((app) => {
+        const btn = document.createElement('button');
+        btn.className = 'desktop-icon';
+        btn.innerHTML = `<span class="icon-box">${app.icon}</span><span class="label">${app.label}</span>`;
+        btn.addEventListener('click', () => openApp(app.id));
+        desktopIcons.appendChild(btn);
       });
 
-      const cards = document.querySelectorAll('[data-tilt]');
+      /* ---------- Window manager ---------- */
+      const windowsLayer = document.getElementById('windowsLayer');
+      const taskbarApps = document.getElementById('taskbarApps');
+      const openWindows = {};
+      let zIndexCounter = 10;
+      let cascadeOffset = 0;
 
-      cards.forEach((card) => {
-        const maxTilt = 16;
+      function updateTaskbar() {
+        taskbarApps.innerHTML = '';
+        Object.keys(openWindows).forEach((id) => {
+          const app = apps.find((a) => a.id === id);
+          const btn = document.createElement('button');
+          btn.className = 'taskbar-app-btn';
+          btn.textContent = app.label;
+          btn.addEventListener('click', () => {
+            const win = openWindows[id];
+            win.classList.remove('minimized');
+            focusWindow(win);
+          });
+          taskbarApps.appendChild(btn);
+        });
+      }
 
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const px = x / rect.width;
-          const py = y / rect.height;
+      function focusWindow(win) {
+        Object.values(openWindows).forEach((w) => w.style.zIndex = 10);
+        win.style.zIndex = ++zIndexCounter;
+      }
 
-          const rotateY = (px - 0.5) * maxTilt * 2;
-          const rotateX = (0.5 - py) * maxTilt * 2;
+      function makeDraggable(win, handle) {
+        let offsetX = 0;
+        let offsetY = 0;
 
-          card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-          card.style.setProperty('--mx', `${px * 100}%`);
-          card.style.setProperty('--my', `${py * 100}%`);
+        handle.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          offsetX = e.clientX - win.offsetLeft;
+          offsetY = e.clientY - win.offsetTop;
+          focusWindow(win);
+
+          function onMove(ev) {
+            win.style.left = `${ev.clientX - offsetX}px`;
+            win.style.top = `${Math.max(0, ev.clientY - offsetY)}px`;
+          }
+
+          function onUp() {
+            document.removeEventListener('mousemove', onMove);
+            document.removeEventListener('mouseup', onUp);
+          }
+
+          document.addEventListener('mousemove', onMove);
+          document.addEventListener('mouseup', onUp);
+        });
+      }
+
+      function wireTabs(win) {
+        win.querySelectorAll('[data-tab]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const tabsContainer = btn.closest('.tabs');
+            const body = btn.closest('.window-body');
+            tabsContainer.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
+            btn.classList.add('active');
+            body.querySelectorAll('.tab-panel').forEach((p) => p.classList.remove('active'));
+            body.querySelector(`[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+          });
+        });
+      }
+
+      function openApp(appId) {
+        if (openWindows[appId]) {
+          openWindows[appId].classList.remove('minimized');
+          focusWindow(openWindows[appId]);
+          return;
+        }
+
+        const app = apps.find((a) => a.id === appId);
+        const win = document.createElement('div');
+        win.className = 'window';
+        win.style.left = `${180 + cascadeOffset}px`;
+        win.style.top = `${50 + cascadeOffset}px`;
+        cascadeOffset = (cascadeOffset + 32) % 200;
+
+        win.innerHTML = `
+          <div class="window-titlebar">
+            <span class="window-title">${app.icon}<span>${app.label}</span></span>
+            <div class="window-controls">
+              <button class="win-btn min" title="Minimize">–</button>
+              <button class="win-btn close" title="Close">×</button>
+            </div>
+          </div>
+          <div class="window-body">${app.render()}</div>
+        `;
+
+        windowsLayer.appendChild(win);
+        openWindows[appId] = win;
+
+        win.querySelector('.close').addEventListener('click', (e) => {
+          e.stopPropagation();
+          win.remove();
+          delete openWindows[appId];
+          updateTaskbar();
         });
 
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+        win.querySelector('.min').addEventListener('click', (e) => {
+          e.stopPropagation();
+          win.classList.add('minimized');
         });
-      });
 
+        win.addEventListener('mousedown', () => focusWindow(win));
+        makeDraggable(win, win.querySelector('.window-titlebar'));
+        wireTabs(win);
+        focusWindow(win);
+        updateTaskbar();
+      }
+
+      /* ---------- Clock ---------- */
+      const clockEl = document.getElementById('clock');
+      function tickClock() {
+        clockEl.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      }
+      tickClock();
+      setInterval(tickClock, 1000 * 30);
+
+      /* ---------- Launch transition ---------- */
+      const landing = document.getElementById('landing');
+      const desktop = document.getElementById('desktop');
+      function launchWorkspace() {
+        landing.classList.add('launching');
+        desktop.classList.add('active');
+        setTimeout(() => {
+          landing.style.display = 'none';
+          openApp('resume');
+        }, 700);
+      }
     </script>
   </body>
 </html>
