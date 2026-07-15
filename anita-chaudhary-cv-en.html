@@ -759,6 +759,7 @@
             Tools
           </span>
           <div class="skill-tags">
+            <span class="tag">Figma</span>
             <span class="tag">WordPress</span><span class="tag">Qt Creator</span
             ><span class="tag">QGIS / PyQt</span>
             <span class="tag">VS Code</span><span class="tag">WinDev 17</span>
@@ -783,8 +784,8 @@
             <ul>
               <li>
                 Redesigned and developed the company website and internal web
-                interfaces using Next.js, TypeScript, Three.js, and Tailwind
-                CSS, delivering a faster, more modern user experience.
+                interfaces using React(Next.js), TypeScript, Three.js, and
+                Tailwind CSS, delivering a faster, more modern user experience.
               </li>
               <li>
                 Built the user interface of an internal sonar survey application
@@ -804,7 +805,7 @@
           <div class="job">
             <div class="job-header">
               <span class="job-title">MES Developer</span>
-              <span class="job-date">APR 2022 – AUG 2022</span>
+              <span class="job-date">APR 2023 – AUG 2023</span>
             </div>
             <div class="job-company">Alpha-3i, Alby-sur-Chéran, France</div>
             <ul>
@@ -919,5 +920,12 @@
         </div>
       </div>
     </div>
+    <script>
+      if (new URLSearchParams(location.search).get('print') === '1') {
+        window.addEventListener('load', () =>
+          setTimeout(() => window.print(), 300),
+        );
+      }
+    </script>
   </body>
 </html>
